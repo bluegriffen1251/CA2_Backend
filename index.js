@@ -11,6 +11,13 @@ const users = [
     {email:"charli@example.com", password:"charli123"}
 ];
 
+app.get('/get',(req,res) =>{
+    if(!users) {
+        return res.status(404).json({message:"cannot get users"});
+    }
+    return res.status(200).json({message:"found users",users});
+})
+
 app.put('/put/:id',(req,res) => {
     const id = parseInt(params.users.id);
 
