@@ -12,10 +12,11 @@ const users = [
 ];
 
 app.get('/get',(req,res) =>{
-    if(!users) {
+    const data = users.find();
+    if(!data) {
         return res.status(404).json({message:"cannot get users"});
     }
-    return res.status(200).json({message:"found users",users});
+    return res.status(200).json({message:"found users",data});
 })
 
 app.put('/put/:id',(req,res) => {
