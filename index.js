@@ -5,18 +5,17 @@ const PORT = 10000;
 
 app.use(express.json())
 
-const users = [
-    {email:"alice@example.com", password:"alice123"},
-    {email:"bob@example.com", password:"bob123"},
-    {email:"charli@example.com", password:"charli123"}
+let users = [
+    {id:1,email:"alice@example.com", password:"alice123"},
+    {id:2,email:"bob@example.com", password:"bob123"},
+    {id:3,email:"charli@example.com", password:"charli123"}
 ];
 
 app.get('/get',(req,res) =>{
-    const data = users.find();
-    if(!data) {
+    if(!users) {
         return res.status(404).json({message:"cannot get users"});
     }
-    return res.status(200).json({message:"found users",data});
+    return res.status(200).json({message:"found users",users});
 })
 
 app.put('/put/:id',(req,res) => {
